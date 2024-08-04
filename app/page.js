@@ -44,37 +44,38 @@ export default function Home() {
   }, []);
 
 return (
-    <Box>
-      <AppBar position="static">
-        <Toolbar>
-          {user && (
-            <Box sx={{ display: 'flex', flex: 1, alignItems: 'center' }}>
-              <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                Welcome, {user.displayName}
-              </Typography>
-              <Button variant="contained" color="secondary" onClick={handleSignOut}>
-                Sign Out
-              </Button>
-            </Box>
-          )}
-        </Toolbar>
-      </AppBar>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          //height: 'calc(100vh - 64px)', // Adjust height to account for AppBar
-        }}
-      >
-        {!user ? (
-          <Button variant="contained" onClick={handleSignIn}>
-            Sign In with Google
-          </Button>
-        ) : (
-          <InventoryPage user={user} />
+  <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+    <AppBar position="static">
+      <Toolbar>
+        {user && (
+          <Box sx={{ display: 'flex', flex: 1, alignItems: 'center', width: '100%' }}>
+            <Typography variant="h6" sx={{ flexGrow: 1 }}>
+              Welcome, {user.displayName}
+            </Typography>
+            <Button variant="contained" color="secondary" onClick={handleSignOut}>
+              Sign Out
+            </Button>
+          </Box>
         )}
-      </Box>
+      </Toolbar>
+    </AppBar>
+    <Box
+      sx={{
+        display: 'flex',
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: '10px' // Optional padding to avoid content touching the edges
+      }}
+    >
+      {!user ? (
+        <Button variant="contained" onClick={handleSignIn}>
+          Sign In with Google
+        </Button>
+      ) : (
+        <InventoryPage user={user} />
+      )}
     </Box>
-  );
+  </Box>
+);
 }

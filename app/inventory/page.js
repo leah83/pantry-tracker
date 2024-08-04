@@ -147,7 +147,7 @@ const InventoryPage = ({ user }) => {
 
   return (
     <>
-      <Container maxWidth="lg" sx={{ mt: 4 }}>
+      <Container maxWidth="lg" sx={{ mt: -14 }}>
         <Box sx={{ mb: 2 }}>
           <Tabs value={selectedFoodGroup} onChange={handleFoodGroupChange} aria-label="food groups">
             {Object.keys(foodGroups).map(group => (
